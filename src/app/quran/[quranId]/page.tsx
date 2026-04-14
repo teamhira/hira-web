@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getChapter, getChapterInfo, getVersesByChapter, getTranslations, getRecitations } from "@/lib/quran";
 import { SurahView } from "./_components/surah-view";
 import { notFound } from "next/navigation";
@@ -6,6 +7,21 @@ import { Footer } from "@/app/_components/footer";
 
 interface PageProps {
   params: Promise<{ quranId: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { quranId } = await params;
+  try {
+    const { chapter } = await getChapter(quranId);
+    if (!chapter) return { title: "Surah Not Found" };
+    
+    return {
+      title: `${chapter.name_simple} (${chapter.name_arabic}) - Al-Quran | Hira`,
+      description: `Read and listen to Surah ${chapter.name_simple} (${chapter.translated_name.name}) with multiple translations and high-quality recitations on Hira.`,
+    };
+  } catch (error) {
+    return { title: "Al-Quran | Hira" };
+  }
 }
 
 export default async function SurahDetailPage({ params }: PageProps) {

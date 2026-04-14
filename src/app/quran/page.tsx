@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getChapters, getJuzs } from "@/lib/quran";
 import { Navbar } from "../_components/navbar";
 import { Footer } from "../_components/footer";
@@ -14,6 +15,11 @@ interface PageProps {
 }
 
 const ITEMS_PER_PAGE = 300;
+
+export const metadata: Metadata = {
+  title: "Al-Quran | Browse Surahs and Juzs",
+  description: "Read and explore the Holy Quran with translations and recitations on Hira.",
+};
 
 export default async function QuranPage({ searchParams }: PageProps) {
   const { page, search, tab } = await searchParams;

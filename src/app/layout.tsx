@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Hira | Your Modern Spiritual Companion",
   description: "A premium Quran and Muslim lifestyle app designed for spiritual consistency.",
+  appleWebApp: {
+    title: "Hira",
+  },
 };
 
 export default function RootLayout({
