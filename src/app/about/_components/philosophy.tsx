@@ -21,7 +21,7 @@ export function AboutPhilosophy() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={fadeInUp as any}
             className="max-w-4xl mx-auto text-center"
           >
             <h2 className="text-sm uppercase tracking-[0.3em] text-emerald-500 font-bold mb-8">Our Philosophy</h2>
@@ -42,7 +42,7 @@ export function AboutPhilosophy() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={fadeInUp}
+              variants={fadeInUp as any}
             >
               <h2 className="text-4xl font-bold mb-8">Built with Intention</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -66,7 +66,7 @@ export function AboutPhilosophy() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              variants={fadeInUp}
+              variants={fadeInUp as any}
               className="p-10 rounded-[3rem] border border-white/10 bg-black/40 backdrop-blur-xl"
             >
               <p className="text-2xl text-white/70 leading-normal italic">

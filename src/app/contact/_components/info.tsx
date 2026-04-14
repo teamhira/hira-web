@@ -31,7 +31,7 @@ export function ContactInfo() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={fadeInUp as any}
             className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5"
           >
             <h3 className="text-sm uppercase tracking-[0.2em] text-emerald-500 font-bold mb-8">Get In Touch</h3>
@@ -58,7 +58,7 @@ export function ContactInfo() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={fadeInUp as any}
             className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5"
           >
             <h3 className="text-sm uppercase tracking-[0.2em] text-emerald-500 font-bold mb-8">Specialized</h3>
@@ -68,7 +68,7 @@ export function ContactInfo() {
                 <div>
                   <h4 className="font-bold mb-1">Support</h4>
                   <p className="text-sm text-white/50 mb-3">If you need help or have issues.</p>
-                  <a href="mailto:support@hira.guru" className="text-lg font-medium hover:text-emerald-500 transition-colors">support@hira.guru</a>
+                  <a href="mailto:hello@hira.guru" className="text-lg font-medium hover:text-emerald-500 transition-colors">hello@hira.guru</a>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -76,7 +76,7 @@ export function ContactInfo() {
                 <div>
                   <h4 className="font-bold mb-1">Partnership</h4>
                   <p className="text-sm text-white/50 mb-3">Interested in collaborating?</p>
-                  <a href="mailto:partnership@hira.guru" className="text-lg font-medium hover:text-emerald-500 transition-colors">partnership@hira.guru</a>
+                  <a href="mailto:hello@hira.guru" className="text-lg font-medium hover:text-emerald-500 transition-colors">hello@hira.guru</a>
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@ export function ContactInfo() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={fadeInUp as any}
             className="p-10 rounded-[2.5rem] bg-emerald-500/[0.03] border border-emerald-500/10"
           >
             <h3 className="text-sm uppercase tracking-[0.2em] text-emerald-500 font-bold mb-8">Response Time</h3>
@@ -117,7 +117,7 @@ export function ContactInfo() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={fadeInUp}
+          variants={fadeInUp as any}
           className="mt-12 text-center"
         >
           <p className="text-white/40 italic">

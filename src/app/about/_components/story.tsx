@@ -21,7 +21,7 @@ export function AboutStory() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={fadeInUp as any}
           >
             <h2 className="text-sm uppercase tracking-[0.3em] text-emerald-500 font-bold mb-6">Why Hira Exists</h2>
             <h3 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">

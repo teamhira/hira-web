@@ -116,7 +116,7 @@ export function PrivacyContent() {
              initial="hidden"
              whileInView="visible"
              viewport={{ once: true }}
-             variants={fadeInUp}
+             variants={fadeInUp as any}
              className="mb-16 p-8 rounded-3xl bg-white/5 border border-white/10"
           >
             <p className="text-lg text-white/70 leading-relaxed">
@@ -131,7 +131,7 @@ export function PrivacyContent() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                variants={fadeInUp}
+                variants={fadeInUp as any}
                 className="group"
               >
                 <h2 className="text-2xl font-bold mb-6 text-white group-hover:text-emerald-500 transition-colors">
@@ -181,7 +181,7 @@ export function PrivacyContent() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={fadeInUp as any}
             className="mt-24 pt-12 border-t border-white/10 text-center"
           >
             <p className="text-2xl font-bold text-white mb-4">Acceptance</p>

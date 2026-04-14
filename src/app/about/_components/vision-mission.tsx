@@ -21,7 +21,7 @@ export function AboutVisionMission() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={fadeInUp as any}
             className="p-10 rounded-[3rem] bg-emerald-500/5 border border-emerald-500/10"
           >
             <IconTarget className="w-12 h-12 text-emerald-500 mb-8" />
@@ -34,7 +34,7 @@ export function AboutVisionMission() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
+            variants={fadeInUp as any}
             className="p-10 rounded-[3rem] bg-white/5 border border-white/10"
           >
             <IconRocket className="w-12 h-12 text-white mb-8" />

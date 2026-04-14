@@ -37,7 +37,7 @@ export function AboutFeatures() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={fadeInUp}
+          variants={fadeInUp as any}
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6">What is Hira?</h2>
@@ -62,7 +62,7 @@ export function AboutFeatures() {
           ].map((item, i) => (
             <motion.div 
               key={i}
-              variants={fadeInUp}
+              variants={fadeInUp as any}
               className="p-8 rounded-[2rem] border border-white/5 bg-white/[0.02] hover:bg-white/5 transition-all group"
             >
               <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">

@@ -19,7 +19,7 @@ export function AboutFuture() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={fadeInUp}
+          variants={fadeInUp as any}
           className="mb-24"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-8">Looking Ahead</h2>
@@ -32,7 +32,7 @@ export function AboutFuture() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={fadeInUp}
+          variants={fadeInUp as any}
           className="space-y-4"
         >
           <h2 className="text-2xl text-emerald-500 font-bold">More Than Just An App</h2>

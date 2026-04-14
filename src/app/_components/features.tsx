@@ -74,11 +74,11 @@ export function Features() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={staggerContainer}
+          variants={staggerContainer as any}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {features.map((feature, index) => (
-            <motion.div key={feature.title} variants={fadeInUp}>
+            <motion.div key={feature.title} variants={fadeInUp as any}>
               <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors cursor-default group h-full">
                 <CardHeader>
                   <div className={`w-12 h-12 rounded-xl ${feature.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>

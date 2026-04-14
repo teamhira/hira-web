@@ -77,7 +77,7 @@ export function ContainerTextFlip({
       <motion.div
         transition={{
           duration: animationDuration / 1000,
-          ease: "easeInOut",
+          ease: "easeInOut" as const,
         }}
         className={cn("inline-block", textClassName)}
         ref={textRef}

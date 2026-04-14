@@ -20,7 +20,7 @@ export function About() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={fadeInUp}
+          variants={fadeInUp as any}
           className="text-center px-6"
         >
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">

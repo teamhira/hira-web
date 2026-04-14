@@ -1,9 +1,7 @@
 "use client";
 
-import { Variants } from "motion/react";
-
 export function useScrollAnimation() {
-  const fadeInUp: Variants = {
+  const fadeInUp: any = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
@@ -15,7 +13,7 @@ export function useScrollAnimation() {
     }
   };
 
-  const staggerContainer: Variants = {
+  const staggerContainer: any = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -26,7 +24,7 @@ export function useScrollAnimation() {
     }
   };
 
-  const scaleIn: Variants = {
+  const scaleIn: any = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
@@ -38,7 +36,7 @@ export function useScrollAnimation() {
     }
   };
 
-  const slideInRight: Variants = {
+  const slideInRight: any = {
     hidden: { opacity: 0, x: 20 },
     visible: {
       opacity: 1,

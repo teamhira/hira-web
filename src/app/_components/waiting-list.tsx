@@ -77,7 +77,7 @@ export function WaitingList() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={scaleIn}
+          variants={scaleIn as any}
           className="w-full mx-auto rounded-[2rem] p-8 md:p-14 border border-white/5 bg-white/[0.03] backdrop-blur-3xl relative overflow-hidden"
         >
           <AnimatePresence mode="wait">

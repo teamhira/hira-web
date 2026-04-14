@@ -13,7 +13,7 @@ export function Videos() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={fadeInUp}
+          variants={fadeInUp as any}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">See Hira in Action</h2>
