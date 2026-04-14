@@ -104,9 +104,11 @@ export const WavyBackground = ({
     };
   }, []);
 
+  const [mounted, setMounted] = useState(false);
   const [isSafari, setIsSafari] = useState(false);
+
   useEffect(() => {
-    // I'm sorry but i have got to support it on safari.
+    setMounted(true);
     setIsSafari(
       typeof window !== "undefined" &&
         navigator.userAgent.includes("Safari") &&
@@ -126,7 +128,7 @@ export const WavyBackground = ({
         ref={canvasRef}
         id="canvas"
         style={{
-          ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
+          ...(mounted && isSafari ? { filter: `blur(${blur}px)` } : {}),
         }}
       ></canvas>
       <div className={cn("relative z-10", className)} {...props}>

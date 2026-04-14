@@ -28,7 +28,12 @@ export function ContainerTextFlip({
   const id = useId();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [width, setWidth] = useState(100);
+  const [mounted, setMounted] = useState(false);
   const textRef = React.useRef(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const updateWidthForWord = () => {
     if (textRef.current) {

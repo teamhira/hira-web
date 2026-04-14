@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "motion/react";
+import { AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -62,21 +62,47 @@ export const StickyScroll = ({
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
-      className="relative flex min-h-screen justify-center space-x-10 rtl:space-x-reverse p-10 pt-[20vh] pb-[20vh]"
+      className="relative flex flex-col lg:flex-row min-h-screen justify-center lg:space-x-10 rtl:space-x-reverse p-4 md:p-10 pt-[5vh] lg:pt-[20vh] pb-[20vh]"
       ref={ref}
     >
-      <div className="div relative flex items-start px-4">
-        <div className="max-w-2xl">
+      {/* Mobile-only Sticky Image Container (Fixed at top/center during scroll) */}
+      <div className="lg:hidden sticky top-[12vh] z-30 w-full flex justify-center pointer-events-none mb-4 h-[40vh]">
+         <div className="w-[11rem] aspect-[9/19.5] transition-all duration-500">
+            <div className="relative h-full w-full bg-black rounded-[2.2rem] border-[5px] border-zinc-900 shadow-[0_0_40px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10 pointer-events-auto">
+               <div 
+                  className="h-full w-full transition-all duration-500"
+                  style={{ background: backgroundGradient }}
+               >
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeCard}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="h-full w-full"
+                    >
+                      {content[activeCard].content}
+                    </motion.div>
+                  </AnimatePresence>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div className="div relative flex items-start w-full lg:w-auto px-4 z-10">
+        <div className="max-w-2xl w-full">
           {content.map((item, index) => (
-            <div key={item.title + index} className="mb-[40vh] last:mb-0">
+            <div key={item.title + index} className="mb-[40vh] lg:mb-[40vh] last:mb-0">
               <motion.h2
                 initial={{
                   opacity: 0,
                 }}
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
+                  scale: activeCard === index ? 1 : 0.95,
                 }}
-                className="text-4xl font-bold text-white tracking-tight"
+                className="text-3xl md:text-4xl font-bold text-white tracking-tight text-center lg:text-left"
               >
                 {item.title}
               </motion.h2>
@@ -87,18 +113,20 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-xl mt-10 max-w-sm text-white/60 leading-relaxed"
+                className="text-lg md:text-xl mt-6 lg:mt-10 max-w-sm mx-auto lg:mx-0 text-white/60 leading-relaxed text-center lg:text-left"
               >
                 {item.description}
               </motion.p>
             </div>
           ))}
-          <div className="h-[50vh]" />
+          <div className="h-[20vh] lg:h-[50vh]" />
         </div>
       </div>
+      
+      {/* Desktop Sticky Image Container */}
       <div
         className={cn(
-          "sticky top-[20vh] hidden h-[65vh] aspect-[9/19.5] lg:block",
+          "sticky top-[20vh] hidden lg:block h-[65vh] aspect-[9/19.5] z-20",
           contentClassName,
         )}
       >
@@ -109,7 +137,18 @@ export const StickyScroll = ({
             className="h-full w-full transition-all duration-500"
             style={{ background: backgroundGradient }}
           >
-            {content[activeCard].content ?? null}
+             <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeCard}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="h-full w-full"
+                >
+                  {content[activeCard].content}
+                </motion.div>
+              </AnimatePresence>
           </div>
         </div>
       </div>

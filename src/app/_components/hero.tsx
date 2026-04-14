@@ -26,7 +26,7 @@ export function Hero() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-left"
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
           >
             <div
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-emerald-400 text-xs font-medium mb-8"
@@ -43,7 +43,7 @@ export function Hero() {
               One Step at a Time
             </h1>
 
-            <div className="text-base md:text-lg text-white/50 mb-10 flex flex-wrap items-center gap-x-2 gap-y-3">
+            <div className="text-base md:text-lg text-white/50 mb-10 flex flex-wrap items-center justify-center lg:justify-start gap-x-2 gap-y-3">
               <span className="whitespace-nowrap">Connect with your</span>
               <ContainerTextFlip 
                 words={words} 

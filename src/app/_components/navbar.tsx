@@ -1,23 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "motion/react";
-import { IconChevronDown, IconBook, IconCompass, IconPray, IconMapPin } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-
-const features = [
-  { title: "Quran", icon: IconBook, href: "/quran", description: "Read and listen to the Holy Quran" },
-  { title: "Hijrah", icon: IconCompass, href: "#features", description: "Track your personal growth" },
-  { title: "Tasbih", icon: IconPray, href: "#features", description: "Digital counter for dhikr" },
-  { title: "Mosques", icon: IconMapPin, href: "#features", description: "Find nearby prayer spaces" },
-];
+import { IconMenu2, IconX } from "@tabler/icons-react";
 
 export function Navbar() {
-  const [isFeaturesOpen, setIsFeaturesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +19,12 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = [
+    { name: "Quran", href: "/quran" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
+  ];
 
   return (
     <div 
@@ -37,14 +36,14 @@ export function Navbar() {
       <motion.nav 
         layout
         className={cn(
-          "flex items-center justify-between w-full transition-all duration-300 border-white/10",
+          "flex items-center justify-between w-full transition-all duration-300 border-white/10 relative",
           isScrolled 
             ? "max-w-5xl px-6 py-3 rounded-full backdrop-blur-xl bg-black/40 border shadow-[0_0_20px_rgba(0,0,0,0.5)]" 
             : "max-w-full px-8 py-5 rounded-none backdrop-blur-md bg-black/20 border-b"
         )}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group relative z-[60]">
           <div className="relative w-8 h-8 transition-transform group-hover:scale-110">
             <Image 
               src="/assets/icon.png" 
@@ -57,74 +56,68 @@ export function Navbar() {
           <span className="text-xl font-bold tracking-tight text-white">Hira</span>
         </Link>
 
-        {/* Center Links */}
+        {/* Desktop Center Links */}
         <ul className="hidden md:flex items-center gap-2 text-sm font-medium list-none">
-          <li 
-            className="relative"
-            onMouseEnter={() => setIsFeaturesOpen(true)}
-            onMouseLeave={() => setIsFeaturesOpen(false)}
-          >
-            <button 
-              type="button"
-              className={cn(
-                "flex items-center gap-1 px-4 py-2 rounded-full transition-colors hover:text-white cursor-pointer",
-                isFeaturesOpen ? "text-white bg-white/5" : "text-white/70"
-              )}
-              aria-haspopup="true"
-              aria-expanded={isFeaturesOpen}
-            >
-              Features
-              <IconChevronDown className={cn("w-4 h-4 transition-transform", isFeaturesOpen && "rotate-180")} />
-            </button>
-
-            {/* Dropdown Menu */}
-            <AnimatePresence>
-              {isFeaturesOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 p-2 rounded-2xl bg-black/99 border border-white/10 backdrop-blur-2xl shadow-2xl"
-                  role="menu"
-                >
-                  <div className="grid gap-1">
-                    {features.map((item) => (
-                      <Link 
-                        key={item.title} 
-                        href={item.href}
-                        className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group"
-                        role="menuitem"
-                      >
-                        <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
-                          <item.icon className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <p className="text-white font-semibold text-xs">{item.title}</p>
-                          <p className="text-white/40 text-[10px] leading-tight mt-0.5">{item.description}</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </li>
-
-          <li>
-            <Link href="/about" className="px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all">About</Link>
-          </li>
-          <li>
-            <Link href="/blog" className="px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all">Blog</Link>
-          </li>
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link 
+                href={link.href} 
+                className="px-4 py-2 rounded-full text-white/70 hover:text-white hover:bg-white/5 transition-all"
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
         </ul>
 
-        {/* Right CTA */}
-        <div className="flex items-center gap-4">
-          <Button type="button" className="bg-emerald-600 hover:bg-emerald-500 text-white rounded-full px-6 shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all hover:scale-105 active:scale-95">
+        {/* Right Actions */}
+        <div className="flex items-center gap-3 relative z-[60]">
+          <Button type="button" className="hidden sm:flex bg-emerald-600 hover:bg-emerald-500 text-white rounded-full px-6 shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all hover:scale-105 active:scale-95">
             Join Waiting List
           </Button>
+          
+          {/* Mobile Toggle */}
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-white hover:bg-white/5 rounded-full transition-colors"
+          >
+            {isOpen ? <IconX className="w-6 h-6" /> : <IconMenu2 className="w-6 h-6" />}
+          </button>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className={cn(
+                "absolute top-full left-0 w-full mt-4 p-6 md:hidden",
+                "bg-black/90 backdrop-blur-2xl border border-white/10 rounded-3xl"
+              )}
+            >
+              <ul className="flex flex-col gap-4 list-none p-0 m-0">
+                {navLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link 
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="block px-6 py-4 text-xl font-bold text-white hover:text-emerald-500 transition-colors border-b border-white/5"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+                <li className="pt-4">
+                  <Button className="w-full h-14 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl text-lg font-bold">
+                    Join Waiting List
+                  </Button>
+                </li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
     </div>
   );

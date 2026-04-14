@@ -23,6 +23,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { Toaster } from "@/components/ui/sonner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,7 +37,13 @@ export default function RootLayout({
       style={{ colorScheme: "dark" }}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-black text-white">{children}</body>
+      <body 
+        className="min-h-full flex flex-col bg-black text-white"
+        suppressHydrationWarning
+      >
+        {children}
+        <Toaster position="top-center" theme="dark" richColors />
+      </body>
     </html>
   );
 }
