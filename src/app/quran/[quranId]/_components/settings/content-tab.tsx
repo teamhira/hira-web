@@ -24,7 +24,7 @@ export function ContentTab({ translations, selectedTranslation, setSelectedTrans
         <Label htmlFor="translation-select" className="text-xs text-primary font-bold uppercase tracking-[0.2em]">Primary Translation</Label>
         <Select 
           value={selectedTranslation} 
-          onValueChange={setSelectedTranslation}
+          onValueChange={(value) => value && setSelectedTranslation(value)}
         >
           <SelectTrigger id="translation-select" className="w-full bg-white/5 border-white/10 h-14 rounded-2xl px-5 focus:ring-primary/20 transition-all">
             <SelectValue placeholder="Choose a translation" />
