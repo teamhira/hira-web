@@ -24,6 +24,7 @@ export function Footer() {
                   fill 
                   sizes="40px"
                   className="object-contain"
+                  priority
                 />
               </div>
               <span className="text-2xl font-bold tracking-tight text-white">Hira</span>

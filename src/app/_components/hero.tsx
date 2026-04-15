@@ -83,7 +83,6 @@ export function Hero() {
           >
             <CardContainer className="inter-var">
               <div className="relative">
-                {/* Background Image 1 (Left) */}
                 <div className="absolute top-10 -left-20 w-[10rem] md:w-[12rem] aspect-[9/19.5] rounded-[2rem] overflow-hidden border border-white/5 opacity-40 blur-[2px] -rotate-12 transition-all hover:blur-0 hover:opacity-60 duration-500">
                   <Image 
                     src="/assets/features/hijrah-dashboard.png" 
@@ -91,6 +90,7 @@ export function Hero() {
                     sizes="(max-width: 768px) 160px, 192px"
                     className="object-cover" 
                     alt="Hijrah Dashboard" 
+                    priority
                   />
                 </div>
 
@@ -102,6 +102,7 @@ export function Hero() {
                     sizes="(max-width: 768px) 160px, 192px"
                     className="object-cover" 
                     alt="Quran Surah List" 
+                    priority
                   />
                 </div>
 
@@ -115,6 +116,7 @@ export function Hero() {
                         sizes="(max-width: 768px) 192px, 224px"
                         className="object-top object-cover"
                         alt="Home App Preview"
+                        priority
                       />
                     </div>
                   </CardItem>

@@ -89,9 +89,9 @@ function FeatureCard({ feature, index }: { feature: FeatureItem, index: number }
         </div>
 
         {/* Phone Frame */}
-        <div className="relative w-[14rem] aspect-[9/19.5] group">
-          <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-[3rem] group-hover:bg-emerald-500/40 transition-all duration-700" />
-          <div className="relative h-full w-full bg-black rounded-[2.5rem] border-[6px] border-zinc-900 shadow-2xl overflow-hidden ring-1 ring-white/10">
+        <div className="relative w-[12rem] aspect-[9/19.5] group">
+          <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-[2.5rem] group-hover:bg-emerald-500/40 transition-all duration-700" />
+          <div className="relative h-full w-full bg-black rounded-[2rem] border-[5px] border-zinc-900 shadow-2xl overflow-hidden ring-1 ring-white/10">
             <div className="relative h-full w-full">
               <Image 
                 src={feature.image} 
@@ -99,6 +99,7 @@ function FeatureCard({ feature, index }: { feature: FeatureItem, index: number }
                 fill
                 sizes="300px"
                 className="object-cover object-top"
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
@@ -111,7 +112,7 @@ function FeatureCard({ feature, index }: { feature: FeatureItem, index: number }
 
 export function MobileFeatureShowcase() {
   return (
-    <div className="relative bg-black pb-20">
+    <div className="relative bg-black pb-20 overflow-visible">
       {features.map((feature, i) => (
         <FeatureCard key={feature.title} feature={feature} index={i} />
       ))}

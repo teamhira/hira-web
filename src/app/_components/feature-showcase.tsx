@@ -31,6 +31,7 @@ const stickyContent = [
           fill 
           sizes="(max-width: 1024px) 100vw, 400px"
           className="object-cover" 
+          priority
         />
       </div>
     ),
@@ -46,6 +47,7 @@ const stickyContent = [
           fill 
           sizes="(max-width: 1024px) 100vw, 400px"
           className="object-cover" 
+          priority
         />
       </div>
     ),
@@ -61,6 +63,7 @@ const stickyContent = [
           fill 
           sizes="(max-width: 1024px) 100vw, 400px"
           className="object-cover" 
+          priority
         />
       </div>
     ),

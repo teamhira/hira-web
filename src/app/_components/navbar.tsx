@@ -43,7 +43,7 @@ export function Navbar() {
         )}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group relative z-[60]">
+          <Link href="/" className="flex items-center gap-2 group relative z-[60]">
           <div className="relative w-8 h-8 transition-transform group-hover:scale-110">
             <Image 
               src="/assets/icon.png" 
@@ -51,6 +51,7 @@ export function Navbar() {
               fill 
               sizes="32px"
               className="object-contain"
+              priority
             />
           </div>
           <span className="text-xl font-bold tracking-tight text-white">Hira</span>
