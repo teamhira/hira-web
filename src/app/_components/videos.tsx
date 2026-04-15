@@ -2,6 +2,9 @@
 
 import { motion } from "motion/react";
 import { useScrollAnimation } from "../_hooks/use-scroll-animation";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { IconPlayerPlayFilled } from "@tabler/icons-react";
 
 export function Videos() {
   const { fadeInUp } = useScrollAnimation();
@@ -22,7 +25,7 @@ export function Videos() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -69,7 +72,22 @@ export function Videos() {
             </p>
           </motion.div>
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center"
+        >
+          <Link href="/demo">
+            <Button size="lg" className="bg-white text-black hover:bg-zinc-200 rounded-full px-10 h-14 text-lg font-bold transition-all hover:scale-105 active:scale-95 group">
+              <IconPlayerPlayFilled className="w-5 h-5 mr-2 transition-transform group-hover:rotate-12" />
+              Watch All Demos
+            </Button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
 }
+

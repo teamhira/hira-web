@@ -39,6 +39,7 @@ export function Footer() {
             <div className="flex flex-col gap-4">
               <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wider">Product</h4>
               <Link href="/quran" className="text-white/60 hover:text-white transition-colors text-sm">Quran</Link>
+              <Link href="/demo" className="text-white/60 hover:text-white transition-colors text-sm">Video Demo</Link>
               <Link href="/about" className="text-white/60 hover:text-white transition-colors text-sm">About</Link>
             </div>
             <div className="flex flex-col gap-4">

@@ -73,6 +73,11 @@ export function Navbar() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-3 relative z-[60]">
+          <Link href="/demo">
+            <Button variant="ghost" className="hidden sm:flex text-white hover:bg-white/10 rounded-full px-6 transition-all">
+              Watch Demo
+            </Button>
+          </Link>
           <Button type="button" className="hidden sm:flex bg-emerald-600 hover:bg-emerald-500 text-white rounded-full px-6 shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all hover:scale-105 active:scale-95">
             Join Waiting List
           </Button>
@@ -110,7 +115,12 @@ export function Navbar() {
                     </Link>
                   </li>
                 ))}
-                <li className="pt-4">
+                <li className="pt-4 flex flex-col gap-3">
+                  <Link href="/demo" onClick={() => setIsOpen(false)}>
+                    <Button variant="outline" className="w-full h-14 border-white/10 hover:bg-white/5 text-white rounded-2xl text-lg font-bold">
+                      Watch Demo
+                    </Button>
+                  </Link>
                   <Button className="w-full h-14 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl text-lg font-bold">
                     Join Waiting List
                   </Button>

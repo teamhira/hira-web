@@ -68,7 +68,7 @@ export function WaitingList() {
   };
 
   return (
-    <section className="py-20 bg-black relative overflow-hidden">
+    <section id="waiting-list" className="py-20 bg-black relative overflow-hidden">
       {/* Very subtle background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-600/5 blur-[100px] rounded-full opacity-50 pointer-events-none" />
 
