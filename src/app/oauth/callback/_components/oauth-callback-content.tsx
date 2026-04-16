@@ -10,7 +10,26 @@ import { useOAuthCallback } from '../_hooks/use-oauth-callback';
  */
 export function OAuthCallbackContent() {
   // Use the extracted hook for logic
-  useOAuthCallback();
+  const { status } = useOAuthCallback();
+
+  const getStatusMessage = () => {
+    switch (status) {
+      case 'initializing':
+        return 'Analyzing connection...';
+      case 'redirecting':
+        return 'Connection established. Handing over to Hira App...';
+      case 'error_missing_code':
+        return 'Authentication failed. No authorization code was received.';
+      case 'error_redirect_failed':
+        return 'We couldn\'t redirect you back to the app automatically.';
+      case 'web_flow':
+        return 'Authentication successful! Continuing on web...';
+      default:
+        return 'Securing your connection to Quran Foundation. You will be redirected shortly.';
+    }
+  };
+
+  const isError = status.startsWith('error');
 
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-zinc-950 text-white p-6 sm:p-8 overflow-hidden relative">
@@ -46,17 +65,17 @@ export function OAuthCallbackContent() {
             initial={{ opacity: 0, filter: "blur(10px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-2xl sm:text-3xl font-bold tracking-tight text-white"
+            className={`text-2xl sm:text-3xl font-bold tracking-tight ${isError ? 'text-rose-500' : 'text-white'}`}
           >
-            Verifying Account
+            {isError ? 'Verification Error' : 'Verifying Account'}
           </motion.h1>
           <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-sm sm:text-base text-zinc-400 leading-relaxed balance"
+            key={status} // Key ensures animation re-triggers on status change
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`text-sm sm:text-base leading-relaxed balance ${isError ? 'text-rose-400/80' : 'text-zinc-400'}`}
           >
-            Securing your connection to Quran Foundation. You will be redirected shortly.
+            {getStatusMessage()}
           </motion.p>
         </div>
 
