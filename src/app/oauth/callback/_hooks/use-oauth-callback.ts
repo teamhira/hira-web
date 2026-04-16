@@ -24,13 +24,14 @@ export function useOAuthCallback() {
     }
 
     if (redirectUri) {
+      console.log(`🚀 [OAuthCallback] Attempting redirect to: ${redirectUri}`);
       const timer = setTimeout(() => {
-        window.location.href = redirectUri;
-      }, 1500);
+        // Using replace to avoid history pollution and ensure a cleaner redirect in mobile browsers
+        window.location.replace(redirectUri);
+      }, 800);
       return () => clearTimeout(timer);
     } else {
-      // Logic for web flow can be added here
-      console.info('Handling Web OAuth flow. Code:', code);
+      console.warn('⚠️ [OAuthCallback] No redirect URI determined. state:', state);
     }
   }, [searchParams]);
 
