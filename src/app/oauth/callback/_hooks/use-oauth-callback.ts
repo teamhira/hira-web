@@ -9,16 +9,27 @@ export function useOAuthCallback() {
   const [status, setStatus] = useState<string>('initializing');
 
   useEffect(() => {
-    const code = searchParams.get('code');
-    const state = searchParams.get('state');
+    // 1. Get code and state from Next.js useSearchParams
+    let code = searchParams.get('code');
+    let state = searchParams.get('state');
 
-    console.log('🔍 [OAuthCallback] Raw Search Params:', {
+    console.log('🌐 [OAuthCallback] Full URL:', typeof window !== 'undefined' ? window.location.href : 'SSR');
+
+    // 2. Fallback to direct window parsing if searchParams is empty (sometimes happens during hydration)
+    if (!code && typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      code = params.get('code');
+      state = params.get('state');
+      if (code) console.log('💡 [OAuthCallback] Recovered code from window.location.search');
+    }
+
+    console.log('🔍 [OAuthCallback] Params Evaluation:', {
       code: code ? 'PRESENT' : 'MISSING',
       state: state || 'MISSING'
     });
 
     if (!code) {
-      console.error('❌ [OAuthCallback] No code found in URL search params');
+      console.error('❌ [OAuthCallback] No code found in URL. Params:', typeof window !== 'undefined' ? window.location.search : 'N/A');
       setStatus('error_missing_code');
       return;
     }
@@ -29,15 +40,18 @@ export function useOAuthCallback() {
     // Support for mobile integrations
     if (state?.startsWith('ios:')) {
       platform = 'ios';
-      redirectUri = `hira://oauth/callback?code=${code}&state=${state.replace('ios:', '')}`;
+      const cleanState = state.replace('ios:', '');
+      // Ensure we encode components if they contain special characters
+      redirectUri = `hira://oauth/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(cleanState)}`;
     } else if (state?.startsWith('android:')) {
       platform = 'android';
-      redirectUri = `hira://oauth/callback?code=${code}&state=${state.replace('android:', '')}`;
+      const cleanState = state.replace('android:', '');
+      redirectUri = `hira://oauth/callback?code=${encodeURIComponent(code)}&state=${encodeURIComponent(cleanState)}`;
     }
 
     if (redirectUri) {
       console.log(`🚀 [OAuthCallback] Identified Platform: ${platform.toUpperCase()}`);
-      console.log(`🔗 [OAuthCallback] Calculated Redirect URI: ${redirectUri}`);
+      console.log(`🔗 [OAuthCallback] Attempting Redirect to: ${redirectUri}`);
       
       setStatus('redirecting');
       
