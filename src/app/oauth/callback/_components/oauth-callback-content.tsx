@@ -10,26 +10,28 @@ import { useOAuthCallback } from '../_hooks/use-oauth-callback';
  */
 export function OAuthCallbackContent() {
   // Use the extracted hook for logic
-  const { status } = useOAuthCallback();
+  const { status, errorDetails } = useOAuthCallback();
 
   const getStatusMessage = () => {
     switch (status) {
       case 'initializing':
-        return 'Analyzing connection...';
+        return 'Initializing authentication...';
       case 'redirecting':
-        return 'Connection established. Handing over to Hira App...';
+        return 'Account verified. Redirecting you back to Hira...';
+      case 'server_error':
+        return `Authentication Error: ${errorDetails || 'An error occurred on the server.'}`;
       case 'error_missing_code':
         return 'Authentication failed. No authorization code was received.';
       case 'error_redirect_failed':
-        return 'We couldn\'t redirect you back to the app automatically.';
+        return 'Could not redirect you back to the app. Please try opening Hira manually.';
       case 'web_flow':
-        return 'Authentication successful! Continuing on web...';
+        return 'Verification successful. You can close this window.';
       default:
-        return 'Securing your connection to Quran Foundation. You will be redirected shortly.';
+        return 'Verifying your account details...';
     }
   };
 
-  const isError = status.startsWith('error');
+  const isError = status.startsWith('error') || status === 'server_error';
 
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-zinc-950 text-white p-6 sm:p-8 overflow-hidden relative">
