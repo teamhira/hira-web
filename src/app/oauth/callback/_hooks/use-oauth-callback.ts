@@ -17,6 +17,7 @@ export function useOAuthCallback() {
     
     // Support for future mobile integrations (SwiftUI/Kotlin)
     if (state?.startsWith('ios:')) {
+      // Redirect to the custom scheme registered in iOS Info.plist
       redirectUri = `hira://oauth/callback?code=${code}&state=${state.replace('ios:', '')}`;
     } else if (state?.startsWith('android:')) {
       redirectUri = `hira://oauth/callback?code=${code}&state=${state.replace('android:', '')}`;
