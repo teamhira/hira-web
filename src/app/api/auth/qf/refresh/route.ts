@@ -36,7 +36,7 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       console.error('❌ [QF Refresh] OAuth Error:', data);
-      return NextResponse.json(data, { status: response.statusCode || 400 });
+      return NextResponse.json(data, { status: response.status || 400 });
     }
 
     // Optionally fetch user info if needed, but usually refresh just gives new tokens.
