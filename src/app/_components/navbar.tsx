@@ -78,9 +78,11 @@ export function Navbar() {
               Watch Demo
             </Button>
           </Link>
-          <Button type="button" className="hidden sm:flex bg-emerald-600 hover:bg-emerald-500 text-white rounded-full px-6 shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all hover:scale-105 active:scale-95">
-            Join Waiting List
-          </Button>
+          <Link href="/#waiting-list">
+            <Button type="button" className="hidden sm:flex bg-emerald-600 hover:bg-emerald-500 text-white rounded-full px-6 shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all hover:scale-105 active:scale-95">
+              Join Waiting List
+            </Button>
+          </Link>
           
           {/* Mobile Toggle */}
           <button 
@@ -121,9 +123,11 @@ export function Navbar() {
                       Watch Demo
                     </Button>
                   </Link>
-                  <Button className="w-full h-14 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl text-lg font-bold">
-                    Join Waiting List
-                  </Button>
+                  <Link href="/#waiting-list" onClick={() => setIsOpen(false)}>
+                    <Button className="w-full h-14 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl text-lg font-bold">
+                      Join Waiting List
+                    </Button>
+                  </Link>
                 </li>
               </ul>
             </motion.div>
