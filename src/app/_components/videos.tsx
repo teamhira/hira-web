@@ -36,16 +36,16 @@ export function Videos() {
               <iframe 
                 width="100%" 
                 height="100%" 
-                src="https://www.youtube.com/embed/ZGG0vgl56nQ?si=BsVL_jIw0lFNYFwb" 
-                title="Blueprint Overview"
+                src="https://www.youtube.com/embed/f1io0T1Zs7w" 
+                title="Complete Hira App Tour"
                 className="absolute inset-0 border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
               />
             </div>
-            <h3 className="mt-6 text-xl font-bold text-white px-2">Blueprint Overview</h3>
+            <h3 className="mt-6 text-xl font-bold text-white px-2">Complete Hira App Tour</h3>
             <p className="mt-2 text-white/50 px-2 text-sm leading-relaxed">
-              Explore the architectural vision behind Hira and how we're building a sustainable future for Muslim tech.
+              Every feature, every screen explained. A complete virtual tour of the Hira ecosystem.
             </p>
           </motion.div>
 
@@ -59,16 +59,16 @@ export function Videos() {
               <iframe 
                 width="100%" 
                 height="100%" 
-                src="https://www.youtube.com/embed/NSaCm1MW-yk?si=gx__Sim5Blc5AlPG" 
-                title="Feature Walkthrough"
+                src="https://www.youtube.com/embed/XepYk10rp_E" 
+                title="Mastering Hira iOS Architecture"
                 className="absolute inset-0 border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
               />
             </div>
-            <h3 className="mt-6 text-xl font-bold text-white px-2">Feature Walkthrough</h3>
+            <h3 className="mt-6 text-xl font-bold text-white px-2">iOS Architecture Deep Dive</h3>
             <p className="mt-2 text-white/50 px-2 text-sm leading-relaxed">
-              A guided tour of the application interface, showing how Hira simplifies your daily spiritual tasks.
+              Technical breakdown of Clean DDD, MVVM-C, SwiftData, and OAuth2 + PKCE implementation.
             </p>
           </motion.div>
         </div>

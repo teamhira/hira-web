@@ -32,8 +32,7 @@ export default function DemoPage() {
                     className="flex items-center gap-2 px-6 py-3 md:px-10 md:py-4 rounded-xl md:rounded-2xl text-xs md:text-sm font-bold data-[state=active]:bg-emerald-600 data-[state=active]:text-white transition-all"
                   >
                     <group.icon className="w-4 h-4" />
-                    <span className="hidden xs:inline">{group.label}</span>
-                    <span className="xs:hidden">{group.label.split(' ')[0]}</span>
+                    <span>{group.label}</span>
                   </TabsTrigger>
                 ))}
               </TabsList>
@@ -51,13 +50,17 @@ export default function DemoPage() {
             {/* Tab Panes */}
             {videoGroups.map((group) => (
               <TabsContent key={group.id} value={group.id} className="mt-0 outline-none">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-y-12 lg:gap-10">
+                <div className={`grid gap-6 md:gap-8 ${
+                  group.id === "features" 
+                    ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5" 
+                    : "grid-cols-1 md:grid-cols-2"
+                }`}>
                   {group.videos.map((video, idx) => (
                     <VideoCard 
                       key={video.id} 
                       video={video} 
                       index={idx} 
-                      showSequence={group.id === "features"}
+                      isShort={group.id === "features"}
                     />
                   ))}
                 </div>
